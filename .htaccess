@@ -1,0 +1,15 @@
+RewriteEngine On
+RewriteBase /
+
+# Specific IPs to ALLOW
+# You can change this to match your IP address or add any you'd like on here.
+RewriteCond %{REMOTE_ADDR} !^127\.0\.0\.1$ # Change This
+RewriteCond %{REMOTE_ADDR} !^8\.8\.8\.8$ # Change This
+
+# Pages viewable to those not on the whitelist.
+RewriteCond %{REQUEST_URI} !^/cpage/index\.html$
+RewriteCond %{REQUEST_URI} !^/cpage/under_construction_sign\.jpg$
+RewriteCond %{REQUEST_URI} !^/cpage/cone\.svg$
+
+# Rewrite to the local filepath of what we'd like to display.
+RewriteRule ^(.*)$ /cpage/index.html [L]
